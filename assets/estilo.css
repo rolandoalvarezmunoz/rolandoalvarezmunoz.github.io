@@ -47,7 +47,7 @@ body {
   line-height: 1.6;
   -webkit-font-smoothing: antialiased;
 }
-img { max-width: 100%; display: block; }
+img { max-width: 100%; height: auto; display: block; }
 a { color: var(--accent); text-underline-offset: 3px; }
 h1, h2, h3 { line-height: 1.15; letter-spacing: -0.02em; margin: 0; }
 h1 { font-size: clamp(2.2rem, 5vw, 3.6rem); font-weight: 800; }
@@ -102,7 +102,7 @@ section + section { border-top: 1px solid var(--line); }
   transition: transform .15s ease, border-color .15s ease;
 }
 .card:hover { transform: translateY(-3px); border-color: var(--accent); }
-.card .shot { aspect-ratio: 16 / 9; background: var(--surface-2); overflow: hidden; }
+.card .shot { aspect-ratio: 1024 / 544; background: var(--surface-2); overflow: hidden; }
 .card .shot img { width: 100%; height: 100%; object-fit: cover; object-position: top; }
 .card .body { padding: 22px; display: flex; flex-direction: column; gap: 10px; flex: 1; }
 .card .body p { color: var(--muted); }
@@ -143,7 +143,7 @@ section + section { border-top: 1px solid var(--line); }
   box-shadow: 0 30px 60px -30px rgba(0,0,0,.45);
 }
 .frame img { border-radius: 12px; }
-.gallery { display: grid; gap: 18px; grid-template-columns: repeat(auto-fit, minmax(300px, 1fr)); margin-top: 28px; }
+.gallery { display: grid; gap: 22px; grid-template-columns: repeat(auto-fit, minmax(420px, 1fr)); margin-top: 28px; }
 .gallery figure { margin: 0; }
 .gallery figcaption { color: var(--muted); font-size: 15px; margin-top: 10px; }
 
@@ -179,7 +179,7 @@ ul.plain li + li { margin-top: 6px; }
 
 .split { display: grid; gap: 32px; grid-template-columns: 1.1fr 1fr; align-items: center; }
 .phone { max-width: 300px; margin: 0 auto; border-radius: 26px; overflow: hidden; border: 1px solid var(--line); box-shadow: 0 30px 60px -30px rgba(0,0,0,.4); }
-.posters { display: grid; gap: 14px; grid-template-columns: 1fr 1fr; }
+.posters { display: grid; gap: 14px; grid-template-columns: 1fr 1fr; align-items: start; }
 .posters img { border-radius: 14px; border: 1px solid var(--line); }
 
 .diagram { margin-top: 28px; background: var(--surface); border: 1px solid var(--line); border-radius: var(--radius); padding: 20px; overflow-x: auto; }
@@ -195,6 +195,7 @@ footer { padding: 40px 0 56px; border-top: 1px solid var(--line); color: var(--m
 footer .wrap { display: flex; flex-wrap: wrap; gap: 12px 24px; justify-content: space-between; }
 
 @media (max-width: 760px) {
+  .gallery { grid-template-columns: 1fr; }
   section { padding: 52px 0; }
   .hero { padding: 64px 0 52px; }
   .job { grid-template-columns: 1fr; gap: 6px; }
