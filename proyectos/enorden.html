@@ -1,0 +1,171 @@
+<!doctype html>
+<html lang="es">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>EnOrden · Rolando Álvarez</title>
+<meta name="description" content="EnOrden: plataforma SaaS chilena de gestión para iglesias, con app Android (Expo), versión web (React) y base de datos Supabase con seguridad por filas.">
+<meta property="og:image" content="../assets/img/enorden/tarjeta.webp">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Manrope:wght@400;600;700;800&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="../assets/estilo.css">
+</head>
+<body>
+
+<header class="top">
+  <div class="wrap">
+    <a class="brand" href="../index.html">Rolando Álvarez</a>
+    <nav aria-label="Secciones">
+      <a href="#producto">Producto</a>
+      <a href="#arquitectura">Arquitectura</a>
+      <a href="#seguridad">Seguridad</a>
+      <a href="#negocio">Negocio</a>
+    </nav>
+  </div>
+</header>
+
+<main>
+  <section class="p-hero">
+    <div class="wrap split">
+      <div>
+        <a class="back" href="../index.html#proyectos">← Proyectos</a>
+        <span class="eyebrow" style="display:block">Producto propio · SaaS</span>
+        <h1>EnOrden</h1>
+        <p class="lead">
+          Una sola plataforma para administrar una iglesia: miembros, finanzas, alabanza, agenda,
+          escuela dominical y más. Funciona en Android y en el navegador, con los datos de cada iglesia
+          separados y los permisos aplicados en la base de datos.
+        </p>
+        <div class="actions">
+          <a class="btn primary" href="https://enordenapp.cl" target="_blank" rel="noopener">Visitar enordenapp.cl</a>
+          <a class="btn" href="#arquitectura">Ver arquitectura</a>
+        </div>
+        <dl class="meta">
+          <div><dt>Rol</dt><dd>Creador · producto, diseño y desarrollo</dd></div>
+          <div><dt>Estado</dt><dd>En producción</dd></div>
+          <div><dt>Módulos</dt><dd>14</dd></div>
+        </dl>
+      </div>
+      <div class="phone"><img src="../assets/img/enorden/app-inicio.webp" alt="Inicio de EnOrden: Mi semana con turnos y cumpleaños" width="600" height="1154"></div>
+    </div>
+  </section>
+
+  <section id="producto">
+    <div class="wrap">
+      <span class="eyebrow">El producto</span>
+      <h2>De cuadernos y planillas a una app</h2>
+      <p class="lead">
+        Muchas iglesias llevan finanzas, repertorios y turnos en cuadernos, planillas y grupos de
+        WhatsApp. EnOrden nació de dos apps que hice para mi propia iglesia (finanzas y repertorios)
+        y creció hasta ser una plataforma para varias iglesias, donde cada una activa solo los
+        módulos que usa.
+      </p>
+      <div class="features">
+        <div class="feature"><h3>Personas</h3><p>Miembros, asistencia, consolidación de visitas nuevas y peticiones de oración.</p></div>
+        <div class="feature"><h3>Cultos y actividades</h3><p>Agenda, alabanza con tonos y modo en vivo, ministerios, escuela dominical y turnos de servicio.</p></div>
+        <div class="feature"><h3>Administración</h3><p>Finanzas por fondo con reportes, beneficios, secretaría con actas y certificados, inventario y proveedores.</p></div>
+        <div class="feature"><h3>"Mi semana"</h3><p>Cada hermano ve en un solo lugar sus turnos, cultos y clases, con recordatorios en el teléfono.</p></div>
+        <div class="feature"><h3>Pensado para WhatsApp</h3><p>Invitación con código QR, boletines, recordatorios y saludos de cumpleaños listos para enviar.</p></div>
+        <div class="feature"><h3>Sin trabas para empezar</h3><p>Entrada con Google o código por correo, asistente de configuración en 4 pasos e importación desde Excel.</p></div>
+      </div>
+    </div>
+  </section>
+
+  <section id="arquitectura">
+    <div class="wrap">
+      <span class="eyebrow">Arquitectura</span>
+      <h2>Una base, dos clientes</h2>
+      <p class="lead">La app móvil y la versión web comparten la misma base de datos y las mismas reglas de permisos: lo que se hace en el computador aparece en el teléfono y al revés.</p>
+      <div class="diagram">
+        <svg viewBox="0 0 940 300" role="img" aria-label="Diagrama: app Android y versión web se conectan a Supabase; el sitio informativo es estático">
+          <defs><marker id="flecha" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="7" markerHeight="7" orient="auto-start-reverse"><path d="M0 0 10 5 0 10z"/></marker></defs>
+          <rect class="box" x="20" y="30" width="262" height="86" rx="14"/>
+          <text x="40" y="64">App Android</text>
+          <text class="sub" x="40" y="88">React Native · Expo · expo-router</text>
+          <rect class="box" x="20" y="170" width="262" height="86" rx="14"/>
+          <text x="40" y="204">Versión web (PWA)</text>
+          <text class="sub" x="40" y="228">React · Vite · Mantine · TanStack Query</text>
+          <rect class="box-a" x="360" y="70" width="260" height="150" rx="16"/>
+          <text x="380" y="104">Supabase</text>
+          <text class="sub" x="380" y="130">PostgreSQL con seguridad por filas</text>
+          <text class="sub" x="380" y="152">Auth: Google · código por correo</text>
+          <text class="sub" x="380" y="174">Funciones SQL · triggers de auditoría</text>
+          <text class="sub" x="380" y="196">39 migraciones con pruebas</text>
+          <rect class="box" x="680" y="30" width="245" height="86" rx="14"/>
+          <text x="700" y="64">Sitio informativo</text>
+          <text class="sub" x="700" y="88">HTML estático · Netlify · Cloudflare</text>
+          <rect class="box" x="680" y="170" width="245" height="86" rx="14"/>
+          <text x="700" y="204">Monitoreo</text>
+          <text class="sub" x="700" y="228">Sentry · Web Analytics</text>
+          <path class="arrow" d="M282 73 C322 73 322 120 358 120"/>
+          <path class="arrow" d="M282 213 C322 213 322 170 358 170"/>
+          <path class="arrow" d="M680 73 C650 73 650 110 622 110"/>
+        </svg>
+      </div>
+      <ul class="plain">
+        <li><strong>Capa de servicios aislada:</strong> en la web, solo la carpeta <code>servicios/</code> habla con el back. Si mañana Supabase se reemplaza por una API propia, se reescribe esa carpeta y el resto queda igual.</li>
+        <li><strong>Multi-iglesia:</strong> cada tabla lleva su iglesia y una persona puede pertenecer a varias con la misma cuenta, cambiando entre ellas desde el inicio.</li>
+        <li><strong>Migraciones reproducibles:</strong> 39 archivos SQL que se pueden volver a ejecutar sin problema, cada uno con su prueba automática sobre PGlite (PostgreSQL en memoria).</li>
+        <li><strong>Pruebas de punta a punta:</strong> Playwright para el ingreso y para verificar que la web se pueda instalar como app.</li>
+        <li><strong>Actualizaciones sin pasar por la tienda:</strong> <code>expo-updates</code> para corregir la app al instante.</li>
+        <li><strong>Exportar todo:</strong> Excel con SheetJS (que se puede volver a importar) y PDF para reportes, actas y certificados.</li>
+      </ul>
+    </div>
+  </section>
+
+  <section id="seguridad">
+    <div class="wrap">
+      <span class="eyebrow">Seguridad y privacidad</span>
+      <h2>Los permisos viven en la base, no en la pantalla</h2>
+      <div class="features">
+        <div class="feature"><h3>Roles por módulo</h3><p>Cada persona tiene accesos por módulo (tesorero, secretario, editor, lector…) y perfiles listos como pastor, músico o maestro. Todo se valida con seguridad por filas en PostgreSQL.</p></div>
+        <div class="feature"><h3>Historial de cambios</h3><p>Triggers que registran quién agregó, cambió o eliminó qué y cuándo, con los valores antes y después. Los movimientos financieros anulados quedan con su motivo.</p></div>
+        <div class="feature"><h3>"Ver como"</h3><p>El administrador puede revisar la app con los menús y botones de otra persona o rol antes de darle acceso.</p></div>
+        <div class="feature"><h3>Datos sensibles</h3><p>Teléfonos y direcciones solo los ve quien atiende el directorio. Cada iglesia puede descargar todos sus datos o pedir su eliminación.</p></div>
+      </div>
+    </div>
+  </section>
+
+  <section id="negocio">
+    <div class="wrap split">
+      <div>
+        <span class="eyebrow">Negocio y lanzamiento</span>
+        <h2>No solo código</h2>
+        <p class="lead">También armé el modelo de negocio y el lanzamiento.</p>
+        <ul class="plain">
+          <li>Planes en pesos chilenos: uno gratis de hasta 40 personas, planes por tamaño de iglesia y uno para redes. Sin cobro por usuario y con 30 días de prueba.</li>
+          <li>Precio fundador para las primeras 20 iglesias.</li>
+          <li>Sitio informativo con páginas legales (privacidad, términos y eliminación de cuenta) para Google Play.</li>
+          <li>Piezas para redes sociales generadas desde una plantilla HTML con Playwright, calendario de publicaciones y una planilla de seguimiento de iglesias contactadas.</li>
+        </ul>
+      </div>
+      <div class="posters">
+        <img src="../assets/img/enorden/presentacion.webp" alt="Pieza de redes: Tu iglesia, en orden" loading="lazy" width="720" height="900">
+        <img src="../assets/img/enorden/whatsapp.webp" alt="Pieza de redes: Si usas WhatsApp, puedes usar EnOrden" loading="lazy" width="720" height="900">
+      </div>
+    </div>
+  </section>
+
+  <section>
+    <div class="wrap">
+      <span class="eyebrow">Tecnología</span>
+      <h2>Con qué está hecho</h2>
+      <div class="skills">
+        <div class="skill"><h3>App móvil</h3><div class="tags"><span class="tag">React Native</span><span class="tag">Expo</span><span class="tag">TypeScript</span><span class="tag">expo-notifications</span><span class="tag">expo-updates</span><span class="tag">EAS Build</span></div></div>
+        <div class="skill"><h3>Web</h3><div class="tags"><span class="tag">React 19</span><span class="tag">Vite</span><span class="tag">Mantine</span><span class="tag">TanStack Query</span><span class="tag">React Router</span><span class="tag">Recharts</span></div></div>
+        <div class="skill"><h3>Datos y back</h3><div class="tags"><span class="tag">Supabase</span><span class="tag">PostgreSQL</span><span class="tag">RLS</span><span class="tag">PGlite</span></div></div>
+        <div class="skill"><h3>Calidad y operación</h3><div class="tags"><span class="tag">Playwright</span><span class="tag">oxlint</span><span class="tag">Sentry</span><span class="tag">Netlify</span><span class="tag">Cloudflare</span></div></div>
+      </div>
+    </div>
+  </section>
+</main>
+
+<footer>
+  <div class="wrap">
+    <a href="../index.html">← Volver al portafolio</a>
+    <a href="https://enordenapp.cl" target="_blank" rel="noopener">enordenapp.cl</a>
+  </div>
+</footer>
+</body>
+</html>

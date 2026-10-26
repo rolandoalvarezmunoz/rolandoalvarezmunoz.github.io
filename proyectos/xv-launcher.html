@@ -1,0 +1,143 @@
+<!doctype html>
+<html lang="es">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>XV Launcher · Rolando Álvarez</title>
+<meta name="description" content="Launcher Android a medida para la radio de un Subaru XV 2012, hecho en Kotlin y Jetpack Compose, con integración al servicio Bluetooth propio del fabricante.">
+<meta property="og:image" content="../assets/img/xv/main.webp">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Manrope:wght@400;600;700;800&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="../assets/estilo.css">
+</head>
+<body>
+
+<header class="top">
+  <div class="wrap">
+    <a class="brand" href="../index.html">Rolando Álvarez</a>
+    <nav aria-label="Secciones">
+      <a href="#que-hace">Qué hace</a>
+      <a href="#pantallas">Pantallas</a>
+      <a href="#desafios">Desafíos</a>
+      <a href="#stack">Tecnología</a>
+    </nav>
+  </div>
+</header>
+
+<main>
+  <section class="p-hero">
+    <div class="wrap">
+      <a class="back" href="../index.html#proyectos">← Proyectos</a>
+      <span class="eyebrow" style="display:block">Proyecto personal · Android</span>
+      <h1>XV Launcher</h1>
+      <p class="lead">
+        Un launcher a medida para la radio Android de mi Subaru XV 2012. Reemplaza la pantalla genérica
+        del fabricante por una interfaz pensada para manejar: letras grandes, todo a un toque, música del
+        celular, velocímetro GPS y clima de la ciudad donde estoy.
+      </p>
+      <dl class="meta">
+        <div><dt>Rol</dt><dd>Diseño y desarrollo completo</dd></div>
+        <div><dt>Plataforma</dt><dd>Radio T8 · Android 8.1 · MediaTek</dd></div>
+        <div><dt>Pantalla</dt><dd>1024 × 600 px</dd></div>
+        <div><dt>Año</dt><dd>2026</dd></div>
+      </dl>
+      <div class="frame" style="margin-top:36px">
+        <img src="../assets/img/xv/main.webp" alt="Pantalla de inicio: saludo, foto del auto, clima, música y accesos rápidos" width="1536" height="816">
+      </div>
+    </div>
+  </section>
+
+  <section id="que-hace">
+    <div class="wrap">
+      <span class="eyebrow">Qué hace</span>
+      <h2>Lo que necesitaba en el auto, nada más</h2>
+      <div class="features">
+        <div class="feature"><h3>Música Bluetooth</h3><p>Muestra la canción, el artista y la carátula del celular conectado, con play, pausa, siguiente y anterior. Funciona también con Spotify o YouTube Music.</p></div>
+        <div class="feature"><h3>Velocímetro GPS</h3><p>Velocidad en vivo en el inicio y una pantalla de viaje con tiempo, distancia, velocidad promedio y máxima.</p></div>
+        <div class="feature"><h3>Clima por ubicación</h3><p>Temperatura, pronóstico por horas y días, y el nombre de la ciudad según el GPS. Se reintenta solo si la radio enciende sin internet.</p></div>
+        <div class="feature"><h3>Accesos que se adaptan</h3><p>Encuentra las apps del fabricante (Teléfono BT, Musica BT, DSP) aunque no estén en el cajón de Android. Cada acceso se cambia con una pulsación larga.</p></div>
+        <div class="feature"><h3>Temas y "Mi auto"</h3><p>Cuatro temas, colores de acento, modo noche y nombre, modelo, color y foto del auto personalizables.</p></div>
+        <div class="feature"><h3>Ecualizador y reposo</h3><p>Ecualizador de 5 bandas con presets y un modo reposo que muestra solo la hora tras 5 minutos sin uso.</p></div>
+      </div>
+    </div>
+  </section>
+
+  <section id="pantallas">
+    <div class="wrap">
+      <span class="eyebrow">Pantallas</span>
+      <h2>Diseñadas para el área real de la radio</h2>
+      <p class="lead">La pantalla es de 1024 × 600, pero la barra del sistema ocupa una franja. Todo se diseñó a 1024 × 544 puntos y la app escala la densidad para llenar exactamente el espacio útil, con textos de al menos 16 pt para leer de reojo.</p>
+      <div class="gallery">
+        <figure><div class="frame"><img src="../assets/img/xv/musica.webp" alt="Pantalla Música" loading="lazy"></div><figcaption>Música: fuente, controles y volumen.</figcaption></figure>
+        <figure><div class="frame"><img src="../assets/img/xv/viaje.webp" alt="Pantalla Viaje" loading="lazy"></div><figcaption>Viaje: velocímetro y estadísticas.</figcaption></figure>
+        <figure><div class="frame"><img src="../assets/img/xv/clima.webp" alt="Pantalla Clima" loading="lazy"></div><figcaption>Clima: ahora, próximas horas y días.</figcaption></figure>
+        <figure><div class="frame"><img src="../assets/img/xv/ajustes.webp" alt="Ajustes rápidos" loading="lazy"></div><figcaption>Ajustes rápidos: brillo, volumen, modo noche.</figcaption></figure>
+        <figure><div class="frame"><img src="../assets/img/xv/ecualizador.webp" alt="Ecualizador" loading="lazy"></div><figcaption>Ecualizador con presets.</figcaption></figure>
+        <figure><div class="frame"><img src="../assets/img/xv/temas.webp" alt="Tema y color" loading="lazy"></div><figcaption>Temas y colores de acento.</figcaption></figure>
+      </div>
+    </div>
+  </section>
+
+  <section id="desafios">
+    <div class="wrap">
+      <span class="eyebrow">Desafíos técnicos</span>
+      <h2>El problema difícil: la música Bluetooth</h2>
+      <p class="lead">
+        La radio no usa el Bluetooth de Android, sino un módulo propio. Su app "Musica BT" no publica
+        la canción por <code>MediaSession</code>, no acepta teclas multimedia y no emite avisos. Para
+        Android, no estaba sonando nada. Así lo resolví:
+      </p>
+      <div class="steps">
+        <div class="step"><h3>Diagnóstico dentro del auto</h3><p>Agregué al launcher una ventana de diagnóstico que listaba sesiones multimedia, notificaciones, avisos recibidos y receptores de botones. Con fotos de esa pantalla confirmé que ninguna vía estándar entregaba datos.</p></div>
+        <div class="step"><h3>Extraer el código del sistema</h3><p>Las apps del fabricante vienen pre-optimizadas: el APK no trae <code>classes.dex</code>. Agregué un exportador que copia el APK y sus archivos <code>.odex</code>/<code>.vdex</code> a un pendrive mediante el Storage Access Framework (la radio tiene Android 8.1 y solo la app Documentos).</p></div>
+        <div class="step"><h3>Leer cómo funciona</h3><p>Con <code>vdexExtractor</code> recuperé el bytecode y con <code>jadx</code> lo descompilé. El servicio <code>BluetoothService</code> exporta una interfaz <code>IMusicCallback</code> para que otras apps reciban la canción y controlen la reproducción, sin exigir permisos.</p></div>
+        <div class="step"><h3>Cliente Binder escrito a mano</h3><p>En vez de copiar archivos AIDL, implementé el protocolo directo con <code>Parcel</code> y <code>transact</code>: registro un <code>Binder</code> propio como listener y paso los avisos al hilo principal.</p></div>
+        <div class="step"><h3>Carátula por internet</h3><p>El Bluetooth de la radio solo entrega título, artista y álbum. La carátula se busca en el catálogo público de iTunes y queda en una caché LRU.</p></div>
+      </div>
+<pre><code>// Registro del listener en el servicio Bluetooth de la radio (sin AIDL)
+private fun call(code: Int, write: (Parcel) -> Unit = {}): Boolean {
+    val b = remote ?: return false
+    val data = Parcel.obtain(); val reply = Parcel.obtain()
+    return try {
+        data.writeInterfaceToken("cn.yunovo.nxos.nxbt.IMusicCallback")
+        write(data)
+        b.transact(code, data, reply, 0)
+        reply.readException(); true
+    } finally { data.recycle(); reply.recycle() }
+}
+
+call(T_ADD_LISTENER) { it.writeStrongBinder(listener) }</code></pre>
+      <h3 style="margin-top:44px">Otros desafíos</h3>
+      <ul class="plain">
+        <li><strong>Apps ocultas del fabricante:</strong> Radio, DSP o Musica BT no tienen la categoría <code>LAUNCHER</code>. Se listan con <code>MATCH_ALL</code> y, en el caso de Musica BT, con la acción propia del sistema que abre esa sección.</li>
+        <li><strong>Una sola fuente de verdad para la música:</strong> el repositorio elige entre MediaSession, el servicio del fabricante, notificaciones o avisos del sistema según cuál esté sonando.</li>
+        <li><strong>GPS compartido:</strong> conteo de pantallas que lo usan para encenderlo solo en Inicio o Viaje, sin cortarlo al pasar de una a otra.</li>
+        <li><strong>Clima y ciudad:</strong> Open-Meteo, con <code>Geocoder</code> y un respaldo de geocodificación inversa; solo vuelve a consultar al moverse más de 3 km.</li>
+      </ul>
+      <div class="note"><strong>Lo que no se pudo:</strong> cambiar el logo de arranque. Encontré la función interna del sistema que lo hace, pero la radio no la ejecutó al llamarla desde una app externa. La alternativa era rootear la radio, y preferí no arriesgar el equipo.</div>
+    </div>
+  </section>
+
+  <section id="stack">
+    <div class="wrap">
+      <span class="eyebrow">Tecnología</span>
+      <h2>Con qué está hecho</h2>
+      <div class="skills">
+        <div class="skill"><h3>App</h3><div class="tags"><span class="tag">Kotlin</span><span class="tag">Jetpack Compose</span><span class="tag">Material 3</span><span class="tag">StateFlow</span></div></div>
+        <div class="skill"><h3>Android</h3><div class="tags"><span class="tag">NotificationListenerService</span><span class="tag">MediaSession</span><span class="tag">Binder · Parcel</span><span class="tag">LocationManager</span><span class="tag">Storage Access Framework</span></div></div>
+        <div class="skill"><h3>Servicios</h3><div class="tags"><span class="tag">Open-Meteo</span><span class="tag">iTunes Search API</span><span class="tag">Geocoder</span></div></div>
+        <div class="skill"><h3>Herramientas</h3><div class="tags"><span class="tag">Android Studio</span><span class="tag">R8</span><span class="tag">jadx</span><span class="tag">vdexExtractor</span><span class="tag">Playwright</span></div></div>
+      </div>
+    </div>
+  </section>
+</main>
+
+<footer>
+  <div class="wrap">
+    <a href="../index.html">← Volver al portafolio</a>
+    <span>Proyecto personal sin fines comerciales. Marcas y nombres pertenecen a sus dueños.</span>
+  </div>
+</footer>
+</body>
+</html>
